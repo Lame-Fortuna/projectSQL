@@ -124,6 +124,7 @@ function deg2rad(deg) {
   return deg * (Math.PI / 180);
 }
 
-app.listen(8000, () => {
-  console.log("Server running on localhost:", 8000);
+const PORT = process.env.PORT || 8000; 
+app.listen(PORT, () => {
+  console.log("Server running on localhost:", PORT);
 });
