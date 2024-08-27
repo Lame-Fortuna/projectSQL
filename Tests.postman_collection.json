@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "4770715d-81dd-464c-9431-b27a31e610f0",
+		"name": "Tests",
+		"description": "A collection for requests and responses from the website project.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36333906",
+		"_collection_link": "https://interstellar-crescent-128935.postman.co/workspace/New-Team-Workspace~6698ca7a-b99a-4b22-998f-2f7e72208d0c/collection/36333906-4770715d-81dd-464c-9431-b27a31e610f0?action=share&source=collection_link&creator=36333906"
+	},
+	"item": [
+		{
+			"name": "ListSchools 1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/listSchools/25.6004/85.0691",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"listSchools",
+						"25.6004",
+						"85.0691"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListSchools 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/listSchools/11.6234/92.7265",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"listSchools",
+						"11.6234",
+						"92.7265"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddSchool 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "A1B1 School",
+							"type": "text"
+						},
+						{
+							"key": "addr",
+							"value": "New Delhi",
+							"type": "text"
+						},
+						{
+							"key": "latitude",
+							"value": "28.644800",
+							"type": "text"
+						},
+						{
+							"key": "longitude",
+							"value": "77.216721",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/addSchool",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"addSchool"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddSchool 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "AN School",
+							"type": "text"
+						},
+						{
+							"key": "addr",
+							"value": "Patna",
+							"type": "text"
+						},
+						{
+							"key": "latitude",
+							"value": "25.612677",
+							"type": "text"
+						},
+						{
+							"key": "longitude",
+							"value": "85.158875",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/addSchool",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"addSchool"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListSchools 3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/listSchools/45.6004/15.0691",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"listSchools",
+						"45.6004",
+						"15.0691"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
