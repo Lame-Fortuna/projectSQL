@@ -7,16 +7,49 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 
+<style>
+    form{
+        background-color: antiquewhite;
+        width: fit-content;
+        padding: 20px 35px ;
+        margin: auto;
+        border: solid 1px;  
+        box-shadow: 3px 2px gray;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 30px;
+    }
+    .inputs{
+        width: fit-content;
+        text-align: right;
+    }
+    .inputs input{
+        margin: 2px;
+        font-size: 35px;
+    }
+    form h1, form>input{
+        margin: 10px;
+    }
+    form>input{
+        padding: 10px;
+        font-size: 25px;
+    }
+</style>
+
 <body>
     <form action="/addSchool" method="post">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" required><br>
-        <label for="addr">Address</label>
-        <input type="text" name="addr" id="addr" required><br>
-        <label for="latitude">Latitude:</label>
-        <input type="text" id="latitude" name="latitude" required><br>
-        <label for="longitude">Longitude:</label>
-        <input type="text" id="longitude" name="longitude" required><br>
+        <h1>New School Entry</h1>
+        <div class="inputs">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required><br>
+            <label for="addr">Address:</label>
+            <input type="text" name="addr" id="addr" required><br>
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" name="latitude" required><br>
+            <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" name="longitude" required><br>
+        </div>
         <input type="submit" value="Insert">
     </form>
 </body>

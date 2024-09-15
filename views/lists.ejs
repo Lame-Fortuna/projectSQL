@@ -1,0 +1,73 @@
+<!DOCTYPE ejs>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<style>
+    .cards{
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .card{
+        margin: 10px;
+        border: solid 1px;
+        box-shadow: 3px 2px gray;
+        padding: 20px;
+        width: 300px;
+    }
+    .other{
+        padding: 0 20px;
+    }
+    .results{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <h1>Schools Nearby</h1>
+    <div class="results">
+        <p>Results found</p>
+        <div>
+            <label for="sort">Sort By</label>
+            <select id="sort">
+                <option>Distance</option>
+            </select>
+            <!--
+            <label for="sort">Distance</label>
+            <select id="sort">
+                <option>1 KM</option>
+                <option>5 KM</option>
+                <option>10 KM</option>
+                <option>20 KM</option>
+                <option>50 KM</option>
+                <option>100 KM</option>
+            </select>
+            -->
+        </div>
+    </div>
+    <hr>
+    <div class="cards">
+        <% results.forEach(function(x) { %>
+            <div class="card">
+                <h2><%= x.name %></h2>
+                <p><%= x.address %></p>
+                <div class="other">
+                    <% if (x.distance) { %>
+                        <p>Distance: <%= x.distance %> KM</p>
+                    <% } %>
+                    <p>Latitude: <%= x.latitude %></p>
+                    <p>Longitude: <%= x.longitude %></p>
+                </div>
+            </div>
+        <% }); %>     
+    </div>
+</body>
+
+</html>

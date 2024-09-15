@@ -7,18 +7,49 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 
+<style>
+    .container{
+        margin: auto;
+        height: 85vh;
+        display: flex;
+        padding: 10px;
+    }
+    .cont{
+        background-color: beige;
+        padding: 10px 30px;
+        border: solid 1px;
+        box-shadow: 2px 2px gray;
+        margin: auto;
+    }
+    .cont button, input{
+        margin: 3px;
+    }
+    .coord{
+        text-align: right;
+    }
+    @media(max-width: 550px){
+        .container{
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+</style>
 
 <body>
     <div class="container">
-        <h1>Enter Coordinates</h1>
-        <div id="locationForm">
-            <label for="latitude">Latitude:</label>
-            <input type="text" id="latitude" name="latitude" placeholder="Latitude" required><br>
+        
+        <div class="cont" id="locationForm">
+            <h1>Enter Coordinates</h1>
+            
+            <div class="coord">
+                <label for="latitude">Latitude:</label>
+                <input type="text" id="latitude" name="latitude" placeholder="Latitude" required><br>
 
-            <label for="longitude">Longitude:</label>
-            <input type="text" id="longitude" name="longitude" placeholder="Longitude" required><br>
+                <label for="longitude">Longitude:</label>
+                <input type="text" id="longitude" name="longitude" placeholder="Longitude" required><br>
+            </div>
 
-            <button type="button" onclick="fillCurrentPosition()">Use GPS</button>
+            <button type="button" onclick="fillCurrentPosition()">Use GPS</button><br>
             <button type="button" onclick="route()">Find Schools Nearby</button>
         </div>
     </div>

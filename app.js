@@ -74,7 +74,7 @@ app.get('/listSchools', (req, res) => {
           return;
       }
 
-      res.status(200).send(results);
+      res.status(200).render('lists', {results});
   });
 });
 
@@ -103,7 +103,7 @@ app.get('/listSchools/:lat/:lon', (req, res) => {
           return { ...school, distance };
       }).sort((a, b) => a.distance - b.distance);
 
-      res.status(200).send(sortedResults);
+      res.status(200).render('lists', { results: sortedResults });
   });
 });
 
@@ -117,7 +117,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
       Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
       Math.sin(dLon / 2) * Math.sin(dLon / 2); 
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
-  return R * c; // Distance in km
+  return Math.round(R * c); // Distance in km
 }
 
 function deg2rad(deg) {
