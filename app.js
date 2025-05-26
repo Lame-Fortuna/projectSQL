@@ -74,38 +74,51 @@ app.get('/listSchools', (req, res) => {
           return;
       }
 
-      res.status(200).render('lists', {results});
+      res.status(200).json({results});
   });
 });
 
 // API 2
-app.get('/listSchools/:lat/:lon', (req, res) => {
-  const lat = parseFloat(req.params.lat);
-  const lon = parseFloat(req.params.lon);
+app.get('/listSchools/:coords', (req, res) => {
+  const [lat, lon] = req.params.coords.split('&').map(Number);
+  const maxDistance = parseFloat(req.query.d);    // e.g., ?d=10
+  const limit = parseInt(req.query.limit);        // e.g., ?limit=5
 
-  // Validate user coordinates
+  // Validate coordinates
   if (isNaN(lat) || isNaN(lon)) {
-      res.status(400).send('Invalid or missing latitude/longitude parameters');
-      return;
+    return res.status(400).send('Invalid latitude or longitude');
   }
 
   const query = 'SELECT * FROM school';
 
   connection.query(query, (err, results) => {
-      if (err) {
-          console.error('Error fetching data: ' + err.stack);
-          res.status(500).send('Error fetching data');
-          return;
-      }
+    if (err) {
+      console.error('Error fetching data: ' + err.stack);
+      return res.status(500).send('Error fetching data');
+    }
 
-      const sortedResults = results.map(school => {
-          const distance = calculateDistance(lat, lon, school.latitude, school.longitude);
-          return { ...school, distance };
-      }).sort((a, b) => a.distance - b.distance);
+    let filteredResults = results.map(school => {
+      const distance = calculateDistance(lat, lon, school.latitude, school.longitude);
+      return { ...school, distance };
+    });
 
-      res.status(200).render('lists', { results: sortedResults });
+    // Filter by max distance
+    if (!isNaN(maxDistance)) {
+      filteredResults = filteredResults.filter(school => school.distance <= maxDistance);
+    }
+
+    // Sort by nearest first
+    filteredResults.sort((a, b) => a.distance - b.distance);
+
+    // Limit the number of results if specified
+    if (!isNaN(limit)) {
+      filteredResults = filteredResults.slice(0, limit);
+    }
+
+    res.status(200).json({ results: filteredResults });
   });
 });
+
 
 // Calculating distance
 function calculateDistance(lat1, lon1, lat2, lon2) {

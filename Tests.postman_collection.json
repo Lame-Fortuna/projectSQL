@@ -9,12 +9,12 @@
 	},
 	"item": [
 		{
-			"name": "ListSchools 1",
+			"name": "ListSchools with latitude and logitude",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/listSchools/25.6004/85.0691",
+					"raw": "http://localhost:8000/listSchools/25.6004&85.0691",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -22,20 +22,19 @@
 					"port": "8000",
 					"path": [
 						"listSchools",
-						"25.6004",
-						"85.0691"
+						"25.6004&85.0691"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "ListSchools 2",
+			"name": "ListSchools with additional query of maximum distance",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/listSchools/11.6234/92.7265",
+					"raw": "http://localhost:8000/listSchools/25.6004&85.0691?d=100",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -43,15 +42,70 @@
 					"port": "8000",
 					"path": [
 						"listSchools",
-						"11.6234",
-						"92.7265"
+						"25.6004&85.0691"
+					],
+					"query": [
+						{
+							"key": "d",
+							"value": "100"
+						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "AddSchool 1",
+			"name": "ListSchools with additional query of distance and limit",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/listSchools/25.6004&85.0691?d=100&limit=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"listSchools",
+						"25.6004&85.0691"
+					],
+					"query": [
+						{
+							"key": "d",
+							"value": "100"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListSchools Invalid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/listSchools/45.6004&jamui",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"listSchools",
+						"45.6004&jamui"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddSchool",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -60,7 +114,7 @@
 					"urlencoded": [
 						{
 							"key": "name",
-							"value": "A1B1 School",
+							"value": "AB School",
 							"type": "text"
 						},
 						{
@@ -70,12 +124,12 @@
 						},
 						{
 							"key": "latitude",
-							"value": "28.644800",
+							"value": "28.804800",
 							"type": "text"
 						},
 						{
 							"key": "longitude",
-							"value": "77.216721",
+							"value": "78.216721",
 							"type": "text"
 						}
 					]
@@ -94,7 +148,7 @@
 			"response": []
 		},
 		{
-			"name": "AddSchool 2",
+			"name": "AddSchool Invalid",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -103,7 +157,7 @@
 					"urlencoded": [
 						{
 							"key": "name",
-							"value": "AN School",
+							"value": "BN School",
 							"type": "text"
 						},
 						{
@@ -113,12 +167,12 @@
 						},
 						{
 							"key": "latitude",
-							"value": "25.612677",
+							"value": "25.67677",
 							"type": "text"
 						},
 						{
 							"key": "longitude",
-							"value": "85.158875",
+							"value": "",
 							"type": "text"
 						}
 					]
@@ -131,27 +185,6 @@
 					"port": "8000",
 					"path": [
 						"addSchool"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ListSchools 3",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000/listSchools/45.6004/15.0691",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"listSchools",
-						"45.6004",
-						"15.0691"
 					]
 				}
 			},

@@ -43,10 +43,10 @@
             
             <div class="coord">
                 <label for="latitude">Latitude:</label>
-                <input type="text" id="latitude" name="latitude" placeholder="Latitude" required><br>
+                <input type="number" id="latitude" name="latitude" placeholder="Latitude" required><br>
 
                 <label for="longitude">Longitude:</label>
-                <input type="text" id="longitude" name="longitude" placeholder="Longitude" required><br>
+                <input type="number" id="longitude" name="longitude" placeholder="Longitude" required><br>
             </div>
 
             <button type="button" onclick="fillCurrentPosition()">Use GPS</button><br>
@@ -86,7 +86,7 @@
             }
 
             // Build the URL with latitude and longitude parameters
-            const url = `/listSchools/${encodeURIComponent(latitude)}/${encodeURIComponent(longitude)}`;
+            const url = `/listSchools/${encodeURIComponent(latitude)}&${encodeURIComponent(longitude)}`;
             
             // Redirect to the URL
             window.location.href = url; 
